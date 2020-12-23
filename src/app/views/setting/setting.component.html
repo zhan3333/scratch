@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Scratch process</span>
+    <div fxFlex></div>
+    <button mat-icon-button (click)="home()">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form fxLayout="row wrap" class="mt-1">
+  <div fxFlex="50" class="pr-1 pl-1">
+    <mat-form-field class="full-width">
+      <input matInput [placeholder]="'title'" [formControl]="title"/>
+    </mat-form-field>
+  </div>
+  <div fxFlex="50">
+    <button mat-raised-button color="primary" (click)="add()">add</button>
+  </div>
+</form>
+<mat-card>
+  <mat-card-content>
+    <mat-list dense>
+      <mat-list-item *ngFor="let item of prize.prizes; let i = index">
+        {{item.title}}
+        <button mat-icon-button (click)="prize.del(i)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

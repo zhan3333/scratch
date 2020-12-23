@@ -1,0 +1,27 @@
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span>Scratch process</span>
+    <div fxFlex></div>
+    <button mat-icon-button (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button mat-icon-button (click)="setting()">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around center"
+     [style.backgroundImage]="'url(\'/assets/images/background.jpeg\')'" [style.height]="'100%'">
+  <ng-container *ngFor="let prize of prizes; let i = index">
+    <div fxFlex="33">
+      <mat-card class="p-1" style="height: 10rem" matRipple [style.backgroundColor]="getCardColor(prize)"
+                (click)="discover(i)">
+        <mat-card-content fxLayout="row" style="height: 100%" fxLayoutAlign="center center">
+          <span style="text-align: center; font-size: xx-large" fxLayoutAlign="center center"
+                *ngIf="prize.discover">{{prize.title}}</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>

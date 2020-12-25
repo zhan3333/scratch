@@ -15,20 +15,14 @@
      [style.backgroundImage]="'url(\'/assets/images/background.jpeg\')'" [style.height]="'100%'">
   <ng-container *ngFor="let prize of prizes; let i = index">
     <div fxFlex="33">
-      <mat-card class="p-1" style="height: 10rem" matRipple [style.backgroundColor]="getCardColor(prize)"
-                (click)="discover(i)">
+      <canvas [id]="'canvas-' + i" class="full-width" style="height: 100%" *ngIf="!prize.discover"></canvas>
+      <mat-card class="p-1" style="height: 10rem" matRipple [style.opacity]="getOpacity(prize)" [id]="'card-' + i">
         <mat-card-content fxLayout="row" style="height: 100%" fxLayoutAlign="center center">
-          <span style="text-align: center; font-size: xx-large" fxLayoutAlign="center center"
-                *ngIf="prize.discover">{{prize.title}}</span>
+          <span style="text-align: center; font-size: xx-large" fxLayoutAlign="center center">{{prize.title}}</span>
         </mat-card-content>
       </mat-card>
     </div>
   </ng-container>
-  <div fxFlex="33">
-    <mat-card style="padding: 0">
-      <canvas id="canvas" class="full-width" style="height: 100%"></canvas>
-    </mat-card>
-  </div>
 </div>
 
 

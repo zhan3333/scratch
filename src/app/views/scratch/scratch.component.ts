@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Prize} from '../../models/prize.model';
 import {Router} from '@angular/router';
+import {ScratchCard} from '../../lib/scratchcard';
 
 @Component({
   selector: 'app-scratch',
@@ -43,6 +44,12 @@ export class ScratchComponent implements OnInit {
 
   ngOnInit(): void {
     this.randomPrizes();
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement | null;
+    if (canvas === null) {
+      return;
+    }
+    const card = new ScratchCard(canvas);
+    card.start();
   }
 
   private randomPrizes(): void {
